@@ -53,7 +53,7 @@ struct Transaction {
     int signature;
 };
 ```
-3. We declare a struct to store all status data :
+3. We declare a `struct` to store all status data :
 ```c++
 struct StatusData {
         int totalTransactionPressed = 0;
