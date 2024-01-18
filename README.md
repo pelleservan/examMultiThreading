@@ -153,4 +153,9 @@ void printMessageStatus(int refreshTime, StatusData& status) {
 }
 ```
 
+2. We get the following exit :
+```
+
+```
+
 2. We use a dedictae thread to run this function.
