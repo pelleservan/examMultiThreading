@@ -153,9 +153,16 @@ void printMessageStatus(int refreshTime, StatusData& status) {
 }
 ```
 
-2. We get the following exit :
-```
-
-```
-
 2. We use a dedictae thread to run this function.
+
+3. We get the following exit :
+```
+Status...
+Last transaction prossed : 12251
+Unvalide transaction : 29564 / 981667 = 3.01161%
+Total transaction prossed : 981667
+Average amount : -2119
+------------------------
+```
+
+
