@@ -6,6 +6,47 @@ Note : Pour facilité le développement du code et le test des différentes fonc
 
 1. Read `./src/data/transactions.csv`.
 2. Store each row in a `std::vector<std::string>`.
+3. Store each row data in a struct :
+```c++
+std::vector<Transaction> getData(const std::string& inputFilePath) {
+    std::ifstream file(inputFilePath);
+
+    if (!file.is_open()) {
+        std::cerr << "Error: Unable to open " << inputFilePath << std::endl;
+        return std::vector<Transaction>();
+    }
+
+    std::vector<Transaction> transactions;
+
+    std::string line;
+    int lineCount = 0;
+
+    while (std::getline(file, line)) {
+        if (lineCount > 0) {
+            std::stringstream ss(line);
+            Transaction transaction;
+
+            if ((ss >> transaction.sourceAccount) &&
+                (ss.ignore(1, ';')) &&
+                (ss >> transaction.destinationAccount) &&
+                (ss.ignore(1, ';')) &&
+                (ss >> transaction.amount) &&
+                (ss.ignore(5, ';')) &&
+                (ss >> transaction.signature)) {
+                transactions.push_back(transaction);
+            } else {
+                std::cerr << "Error parsing line: " << line << std::endl;
+            }
+        }
+
+        lineCount++;
+    }
+
+    file.close();
+
+    return transactions;
+}
+```
 
 ## 2. Step 2 - Verify transaction validity
 
