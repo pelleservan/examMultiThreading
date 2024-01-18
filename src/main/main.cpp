@@ -64,7 +64,7 @@ void printMessageStatus(int refreshTime, StatusData& status) {
     while (true) {
         std::this_thread::sleep_for(std::chrono::seconds(refreshTime));
 
-        float validTransactionRatio = static_cast<float>(status.validCount) / status.totalTransactionPressed;
+        float validTransactionRatio = (status.totalTransactionPressed - static_cast<float>(status.validCount)) / status.totalTransactionPressed;
 
         std::cout << "Status..." << std::endl;
         std::cout << "Last transaction prossed : " << status.lastTransactionProssed << std::endl;
